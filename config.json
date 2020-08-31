@@ -1,0 +1,17 @@
+{
+    "params":
+    {
+        "local_server" : "True",
+        "local_uri" :"mysql://root:@localhost/onlinenotes",
+        "prod_uri" : "mysql://root:@localhost/onlinenotes",
+        "fb_url" : "https://facebook.com/onlinenotes",
+        "tw_url" : "https://twitter.com/onlinenotes",
+        "gh_url" : "https://github.com/onlinenotes",
+        "blog_name" : "Online Notes",
+        "gmail-user" : "",
+        "gmail-password" : ""
+    }
+
+
+
+}
