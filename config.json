@@ -8,8 +8,10 @@
         "tw_url" : "https://twitter.com/onlinenotes",
         "gh_url" : "https://github.com/onlinenotes",
         "blog_name" : "Online Notes",
-        "gmail-user" : "",
-        "gmail-password" : ""
+        "tag_line": "Heaven for programmers",
+        "gmail-user":"codetester536@gmail.com",
+        "gmail-password":"Code@536",
+        "about_text": "Hi my name is Abhi and I create programming tutorials and I am a good boy"
     }
 
 
