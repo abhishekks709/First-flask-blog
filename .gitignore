@@ -1,4 +1,4 @@
 Playground.py
 important.txt
-templates\notes.html
-templates\lay.html
+templates/lay.html
+templates/notes.html
