@@ -37,6 +37,7 @@ class Contacts(db.Model):
 class Posts(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
+    tag_line = db.Column(db.String(80), nullable=False)
     slug = db.Column(db.String(21), nullable=False)
     content = db.Column(db.String(120), nullable=False)
     date = db.Column(db.String(12), nullable=True)
@@ -45,8 +46,9 @@ class Posts(db.Model):
 
 @app.route("/")
 def home():
+    posts = Posts.query.filter_by().all()[0:params['no_of_posts']]
+    return render_template('index.html', params=params, posts = posts)
 
-    return render_template('index.html', params=params)
 
 
 @app.route("/post/<string:post_slug>", methods=['GET'])
@@ -58,6 +60,14 @@ def post_route(post_slug):
 def about():
     return render_template('about.html', params=params)
 
+@app.route("/dashboard", methods =['GET','POST'])
+def dashboard():
+    if request.method == 'POST':
+        pass
+        # redirect to admin panel
+    else:
+
+        return render_template('login.html', params=params)
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():

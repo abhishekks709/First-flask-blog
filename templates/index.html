@@ -8,7 +8,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
             <h1>{{params['blog_name']}}</h1>
-            <span class="subheading">A Blog of every competition preparing Students</span>
+            <span class="subheading">{{params['tag_line']}}</span>
           </div>
         </div>
       </div>
@@ -21,21 +21,25 @@
       <div class="col-lg-8 col-md-10 mx-auto">
 
     <!--Todo: Fetch it using for loop from the database -->
+    {% for post in posts %}
+        <!-- <li><a href="/post/{{ post.slug }}"></a></li> -->
+        <!-- <li><a href="/post/{{ post.slug }}"></a></li> -->
         <div class="post-preview">
-          <a href="post.html">
+          <a href="/post/{{post.slug}}">
             <h2 class="post-title">
-              Man must explore, and this is exploration at its greatest
+              {{ post.title }}
             </h2>
             <h3 class="post-subtitle">
-              Problems look mighty small from 150 miles up
+              {{ post.tag_line }}
             </h3>
           </a>
           <p class="post-meta">Posted by
-            <a href="#">Start Bootstrap</a>
-            on September 24, 2019</p>
-<!--         </div>
-        <hr>
-        <div class="post-preview">
+            <a href="#">Admin</a>
+            on {{post.date}}</p>
+          </div>
+          {{post.content[0:70]}}...
+          <hr>
+        <!-- <div class="post-preview">
           <a href="post.html">
             <h2 class="post-title">
               I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
@@ -45,8 +49,10 @@
             <a href="#">Start Bootstrap</a>
             on September 18, 2019</p>
         </div>
-        <hr>
-        <div class="post-preview">
+        <hr> -->
+
+        {% endfor %}
+        <!-- <div class="post-preview">
           <a href="post.html">
             <h2 class="post-title">
               Science has not yet mastered prophecy
@@ -73,7 +79,7 @@
             <a href="#">Start Bootstrap</a>
             on July 8, 2019</p>
         </div>
-        <hr> -->
+        <hr> --> -->
         <!-- Pager -->
         <div class="clearfix">
           <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
