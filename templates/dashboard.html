@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{url_for('static',filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Admin Panel</h1>
+            <!-- <h1>{{params['blog_name']}}</h1> -->
+            <!-- <span class="subheading">{{params['tag_line']}}</span> -->
+            <span class="subheading">Manage your Posts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+<h1>Edit Posts</h1>
+<!-- Table Start -->
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+<!-- body of table -->
+  {% for post in posts %}
+    <tr>
+      <th scope="row">{{post.sno}}</th>
+      <td>{{post.title}}</td>
+      <td>{{post.date}}</td>
+      <td><button class = "btn btn-primary">Edit</button></td>
+      <td><button class = "btn btn-primary">Delete</button></td>
+    </tr>
+    {% endfor %}
+<!-- table body ends -->
+  </tbody>
+</table>
+
+
+<!-- dark theme table  -->
+<!-- <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table> -->
+  
+  
+<!-- Table ends here  -->
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
