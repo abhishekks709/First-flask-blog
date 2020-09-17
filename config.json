@@ -15,7 +15,8 @@
         "no_of_posts": 3,
         "login_image":"login.svg",
         "admin_user":"Abhi",
-        "admin_password": "subscribenow"
+        "admin_password": "subscribenow",
+        "upload_location" : "C:\\Users\\AKS\\Desktop\\Visual studio code\\Website Development"
     }
 
 
