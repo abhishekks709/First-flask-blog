@@ -3,7 +3,7 @@
 
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('{{url_for('static',filename='img/contact-bg.jpg')}}')">
+  <header class="masthead mb-0" style="background-image: url('{{url_for('static',filename='img/contact-bg.jpg')}}')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -16,6 +16,23 @@
       </div>
     </div>
   </header>
+
+<!-- flashing message -->
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+{% for category,message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+  <!-- <strong>Holy guacamole!</strong> You should check in on some of those fields below. -->
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<!-- flashing message end  -->
 
   <!-- Main Content -->
   <div class="container">

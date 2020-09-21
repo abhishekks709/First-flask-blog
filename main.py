@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 from flask_mail import Mail
 import json
+import math
 import os
 from datetime import datetime
 
@@ -56,8 +57,33 @@ class Posts(db.Model):
 # Home page form
 @app.route("/")
 def home():
-    posts = Posts.query.filter_by().all()[0:params['no_of_posts']]
-    return render_template('index.html', params=params, posts=posts)
+    #  flashing message -- flash(message,category)
+    # flash("follow this page",'success')
+    # flash("Subscribe Now",'danger')
+    # # pagination logic
+    posts = Posts.query.filter_by().all()
+    last = math.ceil(len(posts)/int(params['no_of_posts']))
+    #   [0:params['no_of_posts']]
+
+    page = request.args.get('page')
+    if (not str(page).isnumeric()):
+        page = 1
+    page = int(page)
+    posts = posts[(page-1)*int(params['no_of_posts']):(page-1)*int(params['no_of_posts'])+ int(params['no_of_posts'])]
+    # First:  prev = # , next = page+1
+    if (page==1):
+        prev = "#"
+        next = "/?page=" + str(page+1)
+    # Last: prev = page-1, next = #
+    elif (page==last):
+        prev = "/?page=" + str(page-1)
+        next = '#'
+    # Middle: prev = page-1, next = page+1
+    else:
+        prev = "/?page=" + str(page-1)
+        next = "/?page=" + str(page+1)
+     
+    return render_template('index.html', params=params, posts=posts, prev=prev, next=next)
 
 
 # View post through post form
@@ -120,7 +146,7 @@ def edit(sno):
                 db.session.commit()
                 return redirect('/edit/'+sno)
         post = Posts.query.filter_by(sno=sno).first()
-        return render_template('edit.html', params=params, post=post)
+        return render_template('edit.html', params=params, post=post, sno = sno)
 
 
 # Uploader control
@@ -164,11 +190,12 @@ def contact():
                          message=message, date=datetime.now())
         db.session.add(entry)
         db.session.commit()
-        mail.send_message('New message from ' + name,
-                          sender=email,
-                          recipients=[params['gmail-user']],
-                          body=message + "\n" + phone
-                          )
+        # mail.send_message('New message from ' + name,
+        #                   sender=email,
+        #                   recipients=[params['gmail-user']],
+        #                   body=message + "\n" + phone
+        #                   )
+        flash('Thanks, we will get back to you as soon as possible!','success')
     return render_template('contact.html', params=params)
 
 
