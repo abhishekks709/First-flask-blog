@@ -2,11 +2,11 @@
     "params":
     {
         "local_server" : "True",
-        "local_uri" :"mysql://root:@localhost/onlinenotes",
-        "prod_uri" : "mysql://root:@localhost/onlinenotes",
-        "fb_url" : "https://facebook.com/onlinenotes",
-        "tw_url" : "https://twitter.com/onlinenotes",
-        "gh_url" : "https://github.com/onlinenotes",
+        "local_uri" :"mysql://root:@localhost/coderlanguage",
+        "prod_uri" : "mysql://root:@localhost/coderlanguage",
+        "fb_url" : "https://facebook.com/coderlanguage",
+        "tw_url" : "https://twitter.com/coderlanguage",
+        "gh_url" : "https://github.com/coderlanguage",
         "blog_name" : "Coder language",
         "tag_line": "Heaven for programmers",
         "gmail-user":"Your Gmail id",
